@@ -10,16 +10,34 @@ import CustomerNameDialog from '@/components/CustomerNameDialog'; // New Import
 import { sampleMenuItems } from '@/data/menu-items';
 import { RESTAURANT_WHATSAPP_NUMBER, CURRENCY_SYMBOL } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, Utensils } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
+
+const LogoIcon = () => (
+  <svg
+    className="h-8 w-8"
+    viewBox="0 0 50 50"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="#0A2A42" 
+    aria-hidden="true"
+  >
+    {/* Bowl shape */}
+    <path d="M5 25 C5 35 10 40 25 40 C40 40 45 35 45 25 L5 25 Z" />
+    {/* Food inside the bowl - a simple mound */}
+    <path d="M10 25 Q25 15 40 25 Z" />
+    {/* Chopsticks - two slightly angled lines */}
+    <rect x="15" y="5" width="4" height="22" rx="2" transform="rotate(-15 17 16)" />
+    <rect x="28" y="5" width="4" height="22" rx="2" transform="rotate(15 30 16)" />
+  </svg>
+);
 
 export default function HomePage() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isOrderConfirmationOpen, setIsOrderConfirmationOpen] = useState(false);
-  const [isNameDialogOpen, setIsNameDialogOpen] = useState(false); // New state for name dialog
-  const [showCart, setShowCart] = useState(false); // For mobile view
+  const [isNameDialogOpen, setIsNameDialogOpen] = useState(false); 
+  const [showCart, setShowCart] = useState(false); 
   const { toast } = useToast();
 
   useEffect(() => {
@@ -68,7 +86,6 @@ export default function HomePage() {
       });
       return;
     }
-    // Open name dialog first
     setIsNameDialogOpen(true);
   };
 
@@ -84,7 +101,7 @@ export default function HomePage() {
 
     const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     let orderMessage = `Salaam, New Order from Local Cafe:\n`;
-    orderMessage += `Customer Name: ${customerName}\n\n`; // Add customer name
+    orderMessage += `Customer Name: ${customerName}\n\n`; 
     cartItems.forEach((item) => {
       orderMessage += `- ${item.name} (Qty: ${item.quantity}) - ${CURRENCY_SYMBOL}${(item.price * item.quantity).toFixed(2)}\n`;
     });
@@ -95,8 +112,8 @@ export default function HomePage() {
     
     window.open(whatsappUrl, '_blank');
     setCartItems([]);
-    setIsNameDialogOpen(false); // Close name dialog
-    setIsOrderConfirmationOpen(true); // Open confirmation dialog
+    setIsNameDialogOpen(false); 
+    setIsOrderConfirmationOpen(true); 
   };
   
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -106,7 +123,7 @@ export default function HomePage() {
       <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <Utensils className="h-8 w-8" />
+            <LogoIcon />
             <h1 className="font-headline text-3xl font-bold">Local Cafe</h1>
           </div>
           <Button 
