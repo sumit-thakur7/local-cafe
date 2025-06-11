@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -73,7 +74,7 @@ export default function HomePage() {
       orderMessage += `- ${item.name} (Qty: ${item.quantity}) - ${CURRENCY_SYMBOL}${(item.price * item.quantity).toFixed(2)}\n`;
     });
     orderMessage += `\nTotal: ${CURRENCY_SYMBOL}${totalPrice.toFixed(2)}\n`;
-    orderMessage += `\nPlease confirm this order. JazakAllah Khair!`;
+    orderMessage += `\nPlease confirm this order. Thank you from Bhojan Connect!`;
 
     const whatsappUrl = `https://wa.me/${RESTAURANT_WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
     
