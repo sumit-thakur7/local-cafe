@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Bhojan Connect',
+  title: 'Local Cafe',
   description: 'Order your favorite meals online!',
 };
 

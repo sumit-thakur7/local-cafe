@@ -69,12 +69,12 @@ export default function HomePage() {
     }
 
     const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-    let orderMessage = "Salaam, New Order from Bhojan Connect:\n\n";
+    let orderMessage = "Salaam, New Order from Local Cafe:\n\n";
     cartItems.forEach((item) => {
       orderMessage += `- ${item.name} (Qty: ${item.quantity}) - ${CURRENCY_SYMBOL}${(item.price * item.quantity).toFixed(2)}\n`;
     });
     orderMessage += `\nTotal: ${CURRENCY_SYMBOL}${totalPrice.toFixed(2)}\n`;
-    orderMessage += `\nPlease confirm this order. Thank you from Bhojan Connect!`;
+    orderMessage += `\nPlease confirm this order. Thank you from Local Cafe!`;
 
     const whatsappUrl = `https://wa.me/${RESTAURANT_WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
     
@@ -91,7 +91,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Utensils className="h-8 w-8" />
-            <h1 className="font-headline text-3xl font-bold">Bhojan Connect</h1>
+            <h1 className="font-headline text-3xl font-bold">Local Cafe</h1>
           </div>
           <Button 
             variant="ghost" 
@@ -152,7 +152,7 @@ export default function HomePage() {
       />
 
       <footer className="bg-gray-800 text-white text-center p-4 mt-auto">
-        <p className="font-body">&copy; {new Date().getFullYear()} Bhojan Connect. All rights reserved.</p>
+        <p className="font-body">&copy; {new Date().getFullYear()} Local Cafe. All rights reserved.</p>
       </footer>
 
       <style jsx global>{`
