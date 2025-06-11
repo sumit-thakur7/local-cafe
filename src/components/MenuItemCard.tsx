@@ -8,11 +8,15 @@ import { CURRENCY_SYMBOL } from '@/lib/constants';
 interface MenuItemCardProps {
   item: MenuItem;
   onAddToCart: (item: MenuItem) => void;
+  animationDelay?: number;
 }
 
-export default function MenuItemCard({ item, onAddToCart }: MenuItemCardProps) {
+export default function MenuItemCard({ item, onAddToCart, animationDelay = 0 }: MenuItemCardProps) {
   return (
-    <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105 transition-transform rounded-xl">
+    <Card 
+      className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105 rounded-xl animate-fadeInUp opacity-0"
+      style={{ animationDelay: `${animationDelay}ms`, animationFillMode: 'forwards' }}
+    >
       <CardHeader className="p-0 relative">
         <div className="relative w-full h-56">
           <Image
