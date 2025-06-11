@@ -19,7 +19,7 @@ const LogoIcon = () => (
     className="h-8 w-8"
     viewBox="0 0 50 50"
     xmlns="http://www.w3.org/2000/svg"
-    fill="#0A2A42" 
+    fill="#0A2A42"
     aria-hidden="true"
   >
     {/* Bowl shape */}
@@ -36,8 +36,8 @@ export default function HomePage() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isOrderConfirmationOpen, setIsOrderConfirmationOpen] = useState(false);
-  const [isNameDialogOpen, setIsNameDialogOpen] = useState(false); 
-  const [showCart, setShowCart] = useState(false); 
+  const [isNameDialogOpen, setIsNameDialogOpen] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export default function HomePage() {
     setCartItems((prevCartItems) =>
       prevCartItems
         .map((item) => (item.id === itemId ? { ...item, quantity: newQuantity } : item))
-        .filter((item) => item.quantity > 0) 
+        .filter((item) => item.quantity > 0)
     );
   };
 
@@ -100,8 +100,8 @@ export default function HomePage() {
     }
 
     const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-    let orderMessage = `Salaam, New Order from Local Cafe:\n`;
-    orderMessage += `Customer Name: ${customerName}\n\n`; 
+    let orderMessage = `New Order from Local Cafe:\n`;
+    orderMessage += `Customer Name: ${customerName}\n\n`;
     cartItems.forEach((item) => {
       orderMessage += `- ${item.name} (Qty: ${item.quantity}) - ${CURRENCY_SYMBOL}${(item.price * item.quantity).toFixed(2)}\n`;
     });
@@ -109,13 +109,13 @@ export default function HomePage() {
     orderMessage += `\nPlease confirm this order. Thank you from Local Cafe!`;
 
     const whatsappUrl = `https://wa.me/${RESTAURANT_WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
-    
+
     window.open(whatsappUrl, '_blank');
     setCartItems([]);
-    setIsNameDialogOpen(false); 
-    setIsOrderConfirmationOpen(true); 
+    setIsNameDialogOpen(false);
+    setIsOrderConfirmationOpen(true);
   };
-  
+
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -126,8 +126,8 @@ export default function HomePage() {
             <LogoIcon />
             <h1 className="font-headline text-3xl font-bold">Local Cafe</h1>
           </div>
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="lg:hidden relative hover:bg-primary/80"
             onClick={() => setShowCart(!showCart)}
             aria-label="Toggle Cart"
@@ -148,7 +148,7 @@ export default function HomePage() {
             <h2 className="font-headline text-3xl mb-6 text-center lg:text-left">Our Menu</h2>
             <MenuList menuItems={menuItems} onAddToCart={handleAddToCart} />
           </div>
-          
+
           <aside className="hidden lg:block lg:col-span-1 sticky top-24 h-[calc(100vh-7rem)]">
              <CartDisplay
               cartItems={cartItems}
@@ -162,7 +162,7 @@ export default function HomePage() {
 
       {showCart && (
         <div className="lg:hidden fixed inset-0 bg-black/50 z-40" onClick={() => setShowCart(false)}>
-          <div 
+          <div
             className="fixed bottom-0 left-0 right-0 bg-background p-4 shadow-2xl rounded-t-2xl max-h-[80vh] overflow-y-auto z-50 animate-slide-up"
             onClick={(e) => e.stopPropagation()}
           >
@@ -176,16 +176,16 @@ export default function HomePage() {
           </div>
         </div>
       )}
-      
+
       <CustomerNameDialog
         isOpen={isNameDialogOpen}
         onClose={() => setIsNameDialogOpen(false)}
         onSubmit={handleNameSubmitAndProceedToWhatsApp}
       />
 
-      <OrderConfirmationDialog 
-        isOpen={isOrderConfirmationOpen} 
-        onClose={() => setIsOrderConfirmationOpen(false)} 
+      <OrderConfirmationDialog
+        isOpen={isOrderConfirmationOpen}
+        onClose={() => setIsOrderConfirmationOpen(false)}
       />
 
       <footer className="bg-gray-800 text-white text-center p-4 mt-auto">
