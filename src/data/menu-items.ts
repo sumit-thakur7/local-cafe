@@ -9,6 +9,7 @@ export const sampleMenuItems: MenuItem[] = [
     price: 50,
     imageUrl: 'https://placehold.co/300x200.png',
     category: 'Snacks',
+    aiHint: 'noodles snack',
   },
   {
     id: '2',
@@ -17,6 +18,7 @@ export const sampleMenuItems: MenuItem[] = [
     price: 40,
     imageUrl: 'https://placehold.co/300x200.png',
     category: 'Snacks',
+    aiHint: 'plain noodles',
   },
   {
     id: '3',
@@ -25,6 +27,7 @@ export const sampleMenuItems: MenuItem[] = [
     price: 20,
     imageUrl: 'https://placehold.co/300x200.png',
     category: 'Beverages',
+    aiHint: 'tea cup',
   },
   {
     id: '4',
@@ -33,6 +36,7 @@ export const sampleMenuItems: MenuItem[] = [
     price: 50,
     imageUrl: 'https://placehold.co/300x200.png',
     category: 'Beverages',
+    aiHint: 'coffee cup',
   },
   {
     id: '5',
@@ -41,6 +45,7 @@ export const sampleMenuItems: MenuItem[] = [
     price: 30,
     imageUrl: 'https://placehold.co/300x200.png',
     category: 'Beverages',
+    aiHint: 'masala chai',
   },
   {
     id: '6',
@@ -49,6 +54,7 @@ export const sampleMenuItems: MenuItem[] = [
     price: 50,
     imageUrl: 'https://placehold.co/300x200.png',
     category: 'Beverages',
+    aiHint: 'cold soda',
   },
   {
     id: '7',
@@ -57,6 +63,6 @@ export const sampleMenuItems: MenuItem[] = [
     price: 60,
     imageUrl: 'https://placehold.co/300x200.png',
     category: 'Snacks',
+    aiHint: 'veg omelette',
   },
 ];
-

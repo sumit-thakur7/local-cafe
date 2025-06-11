@@ -20,7 +20,7 @@ export default function MenuItemCard({ item, onAddToCart }: MenuItemCardProps) {
             alt={item.name}
             layout="fill"
             objectFit="cover"
-            data-ai-hint={`${item.category || ''} ${item.name.split(' ')[0] || ''}`.trim()}
+            data-ai-hint={item.aiHint || `${item.category || ''} ${item.name.split(' ')[0] || ''}`.trim()}
           />
         </div>
       </CardHeader>

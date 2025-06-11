@@ -39,7 +39,14 @@ export default function CartItemDisplay({ item, onQuantityChange, onRemoveItem }
   return (
     <div className="flex items-center justify-between p-3 border-b border-border last:border-b-0 bg-card rounded-lg mb-2 shadow-sm">
       <div className="flex items-center space-x-3">
-        <Image src={item.imageUrl} alt={item.name} width={64} height={64} className="rounded-md object-cover h-16 w-16" data-ai-hint={`${item.category || ''} ${item.name.split(' ')[0] || ''}`.trim()} />
+        <Image 
+          src={item.imageUrl} 
+          alt={item.name} 
+          width={64} 
+          height={64} 
+          className="rounded-md object-cover h-16 w-16" 
+          data-ai-hint={item.aiHint || `${item.category || ''} ${item.name.split(' ')[0] || ''}`.trim()} 
+        />
         <div>
           <h4 className="font-headline text-md font-semibold">{item.name}</h4>
           <p className="text-sm text-muted-foreground">{CURRENCY_SYMBOL}{item.price.toFixed(2)}</p>
