@@ -52,7 +52,7 @@ export const sampleMenuItems: MenuItem[] = [
   },
   {
     id: '7',
-    name: 'Vegomlet',
+    name: 'Veg omelette',
     description: 'A delicious vegetarian omelette.',
     price: 60,
     imageUrl: 'https://placehold.co/300x200.png',
