@@ -34,4 +34,29 @@ export const sampleMenuItems: MenuItem[] = [
     imageUrl: 'https://placehold.co/300x200.png',
     category: 'Beverages',
   },
+  {
+    id: '5',
+    name: 'Masala Tea',
+    description: 'Flavorful and aromatic spiced tea.',
+    price: 30,
+    imageUrl: 'https://placehold.co/300x200.png',
+    category: 'Beverages',
+  },
+  {
+    id: '6',
+    name: 'Cold Drink',
+    description: 'A refreshing chilled beverage.',
+    price: 50,
+    imageUrl: 'https://placehold.co/300x200.png',
+    category: 'Beverages',
+  },
+  {
+    id: '7',
+    name: 'Vegomlet',
+    description: 'A delicious vegetarian omelette.',
+    price: 60,
+    imageUrl: 'https://placehold.co/300x200.png',
+    category: 'Snacks',
+  },
 ];
+
