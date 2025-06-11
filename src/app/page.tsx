@@ -66,7 +66,7 @@ export default function HomePage() {
     setCartItems((prevCartItems) =>
       prevCartItems
         .map((item) => (item.id === itemId ? { ...item, quantity: newQuantity } : item))
-        .filter((item) => item.quantity > 0)
+        .filter((item) => item.quantity > 0) // This will remove the item if newQuantity is 0
     );
   };
 
@@ -147,7 +147,12 @@ export default function HomePage() {
         <div className="lg:grid lg:grid-cols-3 lg:gap-8">
           <div className="lg:col-span-2">
             <h2 className="font-headline text-3xl mb-6 text-center lg:text-left">Our Menu</h2>
-            <MenuList menuItems={menuItems} onAddToCart={handleAddToCart} />
+            <MenuList 
+              menuItems={menuItems} 
+              cartItems={cartItems}
+              onAddToCart={handleAddToCart}
+              onQuantityChange={handleQuantityChange} 
+            />
           </div>
 
           <aside className="hidden lg:block lg:col-span-1 sticky top-24 h-[calc(100vh-7rem)]">
