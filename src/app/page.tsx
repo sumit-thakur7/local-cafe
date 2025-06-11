@@ -6,6 +6,7 @@ import type { MenuItem, CartItem } from '@/types';
 import MenuList from '@/components/MenuList';
 import CartDisplay from '@/components/CartDisplay';
 import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
+import CustomerNameDialog from '@/components/CustomerNameDialog'; // New Import
 import { sampleMenuItems } from '@/data/menu-items';
 import { RESTAURANT_WHATSAPP_NUMBER, CURRENCY_SYMBOL } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
@@ -17,11 +18,11 @@ export default function HomePage() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isOrderConfirmationOpen, setIsOrderConfirmationOpen] = useState(false);
+  const [isNameDialogOpen, setIsNameDialogOpen] = useState(false); // New state for name dialog
   const [showCart, setShowCart] = useState(false); // For mobile view
   const { toast } = useToast();
 
   useEffect(() => {
-    // In a real app, you might fetch menu items from an API
     setMenuItems(sampleMenuItems);
   }, []);
 
@@ -46,7 +47,7 @@ export default function HomePage() {
     setCartItems((prevCartItems) =>
       prevCartItems
         .map((item) => (item.id === itemId ? { ...item, quantity: newQuantity } : item))
-        .filter((item) => item.quantity > 0) // Remove if quantity is 0 or less
+        .filter((item) => item.quantity > 0) 
     );
   };
 
@@ -67,9 +68,23 @@ export default function HomePage() {
       });
       return;
     }
+    // Open name dialog first
+    setIsNameDialogOpen(true);
+  };
+
+  const handleNameSubmitAndProceedToWhatsApp = (customerName: string) => {
+    if (!customerName.trim()) {
+      toast({
+        title: "Name required",
+        description: "Please enter your name to proceed.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-    let orderMessage = "Salaam, New Order from Local Cafe:\n\n";
+    let orderMessage = `Salaam, New Order from Local Cafe:\n`;
+    orderMessage += `Customer Name: ${customerName}\n\n`; // Add customer name
     cartItems.forEach((item) => {
       orderMessage += `- ${item.name} (Qty: ${item.quantity}) - ${CURRENCY_SYMBOL}${(item.price * item.quantity).toFixed(2)}\n`;
     });
@@ -80,7 +95,8 @@ export default function HomePage() {
     
     window.open(whatsappUrl, '_blank');
     setCartItems([]);
-    setIsOrderConfirmationOpen(true);
+    setIsNameDialogOpen(false); // Close name dialog
+    setIsOrderConfirmationOpen(true); // Open confirmation dialog
   };
   
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -116,7 +132,6 @@ export default function HomePage() {
             <MenuList menuItems={menuItems} onAddToCart={handleAddToCart} />
           </div>
           
-          {/* Cart for Desktop */}
           <aside className="hidden lg:block lg:col-span-1 sticky top-24 h-[calc(100vh-7rem)]">
              <CartDisplay
               cartItems={cartItems}
@@ -128,12 +143,11 @@ export default function HomePage() {
         </div>
       </main>
 
-      {/* Cart for Mobile (Drawer/Modal style) */}
       {showCart && (
         <div className="lg:hidden fixed inset-0 bg-black/50 z-40" onClick={() => setShowCart(false)}>
           <div 
             className="fixed bottom-0 left-0 right-0 bg-background p-4 shadow-2xl rounded-t-2xl max-h-[80vh] overflow-y-auto z-50 animate-slide-up"
-            onClick={(e) => e.stopPropagation()} // Prevents closing when clicking inside the cart
+            onClick={(e) => e.stopPropagation()}
           >
              <CartDisplay
               cartItems={cartItems}
@@ -146,6 +160,12 @@ export default function HomePage() {
         </div>
       )}
       
+      <CustomerNameDialog
+        isOpen={isNameDialogOpen}
+        onClose={() => setIsNameDialogOpen(false)}
+        onSubmit={handleNameSubmitAndProceedToWhatsApp}
+      />
+
       <OrderConfirmationDialog 
         isOpen={isOrderConfirmationOpen} 
         onClose={() => setIsOrderConfirmationOpen(false)} 
