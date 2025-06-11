@@ -1,3 +1,4 @@
+
 import type { CartItem } from '@/types';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -38,21 +39,25 @@ export default function CartItemDisplay({ item, onQuantityChange, onRemoveItem }
 
   return (
     <div className="flex items-center justify-between p-3 border-b border-border last:border-b-0 bg-card rounded-lg mb-2 shadow-sm">
-      <div className="flex items-center space-x-3">
+      {/* Container for image and text. This should take available space and allow its content to shrink. */}
+      <div className="flex items-center space-x-3 flex-1 min-w-0">
         <Image 
           src={item.imageUrl} 
           alt={item.name} 
           width={64} 
           height={64} 
-          className="rounded-md object-cover h-16 w-16" 
+          className="rounded-md object-cover h-16 w-16 flex-shrink-0" 
           data-ai-hint={item.aiHint || `${item.category || ''} ${item.name.split(' ')[0] || ''}`.trim()} 
         />
-        <div>
-          <h4 className="font-headline text-md font-semibold">{item.name}</h4>
+        {/* Container for name and price. This should also allow its content (the name) to truncate. */}
+        <div className="min-w-0">
+          <h4 className="font-headline text-md font-semibold truncate">{item.name}</h4>
           <p className="text-sm text-muted-foreground">{CURRENCY_SYMBOL}{item.price.toFixed(2)}</p>
         </div>
       </div>
-      <div className="flex items-center space-x-2">
+
+      {/* Container for quantity controls. This should not shrink. */}
+      <div className="flex items-center space-x-2 flex-shrink-0">
         <Button variant="ghost" size="icon" onClick={handleDecrement} aria-label="Decrease quantity">
           <MinusCircle className="h-5 w-5 text-destructive" />
         </Button>
@@ -73,3 +78,4 @@ export default function CartItemDisplay({ item, onQuantityChange, onRemoveItem }
     </div>
   );
 }
+
