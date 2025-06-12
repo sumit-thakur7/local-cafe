@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,31 +5,14 @@ import type { MenuItem, CartItem } from '@/types';
 import MenuList from '@/components/MenuList';
 import CartDisplay from '@/components/CartDisplay';
 import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
-import CustomerNameDialog from '@/components/CustomerNameDialog'; // New Import
+import CustomerNameDialog from '@/components/CustomerNameDialog';
 import { sampleMenuItems } from '@/data/menu-items';
 import { RESTAURANT_WHATSAPP_NUMBER, CURRENCY_SYMBOL } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
-
-const LogoIcon = () => (
-  <svg
-    className="h-8 w-8"
-    viewBox="0 0 50 50"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="#0A2A42"
-    aria-hidden="true"
-  >
-    {/* Bowl shape */}
-    <path d="M5 25 C5 35 10 40 25 40 C40 40 45 35 45 25 L5 25 Z" />
-    {/* Food inside the bowl - a simple mound */}
-    <path d="M10 25 Q25 15 40 25 Z" />
-    {/* Chopsticks - two slightly angled lines */}
-    <rect x="15" y="5" width="4" height="22" rx="2" transform="rotate(-15 17 16)" />
-    <rect x="28" y="5" width="4" height="22" rx="2" transform="rotate(15 30 16)" />
-  </svg>
-);
+import logo from '@public/images/local-logo.jpeg';
 
 export default function HomePage() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
@@ -66,16 +48,16 @@ export default function HomePage() {
     setCartItems((prevCartItems) =>
       prevCartItems
         .map((item) => (item.id === itemId ? { ...item, quantity: newQuantity } : item))
-        .filter((item) => item.quantity > 0) // This will remove the item if newQuantity is 0
+        .filter((item) => item.quantity > 0)
     );
   };
 
   const handleRemoveItem = (itemId: string) => {
     setCartItems((prevCartItems) => prevCartItems.filter((item) => item.id !== itemId));
     toast({
-        title: "Item removed from cart.",
-        variant: "destructive",
-      });
+      title: "Item removed from cart.",
+      variant: "destructive",
+    });
   };
 
   const handleSubmitOrder = () => {
@@ -124,8 +106,9 @@ export default function HomePage() {
       <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <LogoIcon />
-            <h1 className="font-headline text-3xl font-bold">Local Cafe</h1>
+            {/* Updated Logo */}
+            <Image src={logo} alt="Cafe Logo" width={50} height={50} className="rounded-full" />
+            <h1 className="font-headline text-3xl font-bold">hello Cafe</h1>
           </div>
           <Button
             variant="ghost"
@@ -156,7 +139,7 @@ export default function HomePage() {
           </div>
 
           <aside className="hidden lg:block lg:col-span-1 sticky top-24 h-[calc(100vh-7rem)]">
-             <CartDisplay
+            <CartDisplay
               cartItems={cartItems}
               onQuantityChange={handleQuantityChange}
               onRemoveItem={handleRemoveItem}
@@ -172,13 +155,13 @@ export default function HomePage() {
             className="fixed bottom-0 left-0 right-0 bg-background p-4 shadow-2xl rounded-t-2xl max-h-[80vh] overflow-y-auto z-50 animate-slide-up"
             onClick={(e) => e.stopPropagation()}
           >
-             <CartDisplay
+            <CartDisplay
               cartItems={cartItems}
               onQuantityChange={handleQuantityChange}
               onRemoveItem={handleRemoveItem}
               onSubmitOrder={handleSubmitOrder}
             />
-             <Button variant="outline" onClick={() => setShowCart(false)} className="w-full mt-4">Close Cart</Button>
+            <Button variant="outline" onClick={() => setShowCart(false)} className="w-full mt-4">Close Cart</Button>
           </div>
         </div>
       )}
