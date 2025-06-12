@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
-import logo from '@public/images/local-logo.jpeg';
+// Removed problematic import: import logo from '@public/images/local-logo.jpeg';
 
 export default function HomePage() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
@@ -106,8 +106,8 @@ export default function HomePage() {
       <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            {/* Updated Logo */}
-            <Image src={logo} alt="Cafe Logo" width={50} height={50} className="rounded-full" />
+            {/* Updated Logo path */}
+            <Image src="/images/local-logo.jpeg" alt="Cafe Logo" width={50} height={50} className="rounded-full" />
             <h1 className="font-headline text-3xl font-bold">hello Cafe</h1>
           </div>
           <Button
