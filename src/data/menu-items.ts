@@ -43,7 +43,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Masala Tea',
     description: 'Flavorful and aromatic spiced tea.',
     price: 30,
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: '/images/Masala_Tea.webp', // Updated to use local image
     category: 'Beverages',
     aiHint: 'masala chai',
   },
