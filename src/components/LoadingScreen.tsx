@@ -39,8 +39,8 @@ const LoadingScreen: FC<LoadingScreenProps> = ({ onLoaded, loadingDuration = 250
       <Image
         src="/images/local-logo.png"
         alt="Local Cafe Logo"
-        width={150}
-        height={150}
+        width={240}
+        height={240}
         className="rounded-full mb-8 animate-pulse"
         priority // Ensures logo loads quickly for LCP
       />
