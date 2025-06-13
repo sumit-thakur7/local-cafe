@@ -16,7 +16,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Plain Maggi',
     description: 'Simple and comforting plain instant noodles.',
     price: 40,
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: '/images/Plain-Maggi.webp',
     category: 'Snacks',
     aiHint: 'plain noodles',
   },
