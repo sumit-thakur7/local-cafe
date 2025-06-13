@@ -34,7 +34,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Coffee',
     description: 'A classic cup of coffee to energize your day.',
     price: 50,
-    imageUrl: '/images/Milk-Coffee.webp',
+    imageUrl: '/images/Milk_Coffee.webp',
     category: 'Beverages',
     aiHint: 'coffee cup',
   },
