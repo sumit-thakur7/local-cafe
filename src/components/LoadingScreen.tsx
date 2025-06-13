@@ -37,7 +37,7 @@ const LoadingScreen: FC<LoadingScreenProps> = ({ onLoaded, loadingDuration = 250
       aria-busy="true"
     >
       <Image
-        src="/images/local-logo.jpeg"
+        src="/images/local-logo.png"
         alt="Local Cafe Logo"
         width={150}
         height={150}
