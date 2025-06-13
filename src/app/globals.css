@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,25 +9,25 @@ body {
 
 @layer base {
   :root {
-    --background: 60 56% 91%; /* Light Beige #F5F5DC */
-    --foreground: 0 0% 20%; /* Dark Gray for text */
-    --card: 60 50% 95%; /* Off-white / Lighter Beige */
-    --card-foreground: 0 0% 20%; /* Dark Gray for card text */
-    --popover: 60 50% 95%;
+    --background: 30 100% 97%; /* Soft Cream #FFF8F0 */
+    --foreground: 0 0% 20%; /* Dark Grey #333333 */
+    --card: 30 80% 95%; /* Lighter cream for cards */
+    --card-foreground: 0 0% 20%;
+    --popover: 30 80% 95%;
     --popover-foreground: 0 0% 20%;
-    --primary: 45 100% 51%; /* Golden Yellow #FFC107 */
-    --primary-foreground: 0 0% 10%; /* Dark text on Golden Yellow */
-    --secondary: 45 80% 80%; /* Lighter Golden Yellow */
-    --secondary-foreground: 0 0% 10%;
-    --muted: 60 30% 85%; /* Softer Beige */
-    --muted-foreground: 0 0% 40%; /* Lighter Gray for muted text */
-    --accent: 25 100% 41%; /* Burnt Orange #D35400 */
-    --accent-foreground: 0 0% 100%; /* White text on Burnt Orange */
+    --primary: 5 100% 69%; /* Fresh Red-Orange #FF6F61 */
+    --primary-foreground: 0 0% 100%; /* White text on Red-Orange */
+    --secondary: 39 100% 50%; /* Soft Orange #FFA500 */
+    --secondary-foreground: 0 0% 10%; /* Dark text on Soft Orange */
+    --muted: 30 50% 90%; /* Softer Cream for muted elements */
+    --muted-foreground: 0 0% 40%;
+    --accent: 51 100% 50%; /* Golden Yellow #FFD700 */
+    --accent-foreground: 0 0% 10%; /* Dark text on Golden Yellow */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 60 30% 80%; /* Beige-toned border */
-    --input: 60 30% 80%; /* Beige-toned input background */
-    --ring: 45 100% 51%; /* Primary color for focus rings */
+    --border: 30 30% 85%; /* Cream-toned border */
+    --input: 30 30% 90%; /* Cream-toned input background */
+    --ring: 5 100% 69%; /* Primary color for focus rings */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -34,47 +35,45 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
-    /* Sidebar colors adjusted to match the theme */
-    --sidebar-background: 50 60% 93%; /* Very light beige-yellow */
-    --sidebar-foreground: 45 30% 30%; /* Dark brownish yellow */
-    --sidebar-primary: 45 100% 51%; /* Golden Yellow */
-    --sidebar-primary-foreground: 0 0% 10%; /* Dark text on Golden Yellow */
-    --sidebar-accent: 25 100% 41%; /* Burnt Orange */
-    --sidebar-accent-foreground: 0 0% 100%; /* White text on Burnt Orange */
-    --sidebar-border: 60 30% 80%; /* Beige-toned border */
-    --sidebar-ring: 45 100% 51%; /* Primary color for focus rings */
+    --sidebar-background: 30 90% 96%; 
+    --sidebar-foreground: 0 0% 25%; 
+    --sidebar-primary: 5 100% 69%; 
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 51 100% 50%; 
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 30 30% 85%;
+    --sidebar-ring: 5 100% 69%;
   }
 
   .dark {
-    /* Maintaining a similar dark theme structure, adjusting main colors */
     --background: 0 0% 10%; /* Dark background */
-    --foreground: 60 30% 90%; /* Light beige/gray text */
+    --foreground: 30 30% 90%; /* Light cream/gray text */
     --card: 0 0% 12%; 
-    --card-foreground: 60 30% 90%;
+    --card-foreground: 30 30% 90%;
     --popover: 0 0% 12%;
-    --popover-foreground: 60 30% 90%;
-    --primary: 45 100% 51%; /* Golden Yellow */
-    --primary-foreground: 0 0% 10%;
-    --secondary: 45 80% 30%; /* Darker Golden Yellow */
-    --secondary-foreground: 60 30% 90%;
+    --popover-foreground: 30 30% 90%;
+    --primary: 5 100% 69%; /* Fresh Red-Orange */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 39 100% 40%; /* Darker Soft Orange */
+    --secondary-foreground: 30 30% 90%;
     --muted: 0 0% 20%;
-    --muted-foreground: 60 30% 70%;
-    --accent: 25 100% 50%; /* Slightly brighter Burnt Orange for dark mode */
-    --accent-foreground: 0 0% 100%;
+    --muted-foreground: 30 30% 70%;
+    --accent: 51 100% 50%; /* Golden Yellow */
+    --accent-foreground: 0 0% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 25%;
     --input: 0 0% 25%;
-    --ring: 45 100% 51%;
+    --ring: 5 100% 69%;
     
     --sidebar-background: 0 0% 8%; 
-    --sidebar-foreground: 60 30% 85%;
-    --sidebar-primary: 45 100% 51%;
-    --sidebar-primary-foreground: 0 0% 10%;
-    --sidebar-accent: 25 100% 50%;
-    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-foreground: 30 30% 85%;
+    --sidebar-primary: 5 100% 69%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 51 100% 50%;
+    --sidebar-accent-foreground: 0 0% 10%;
     --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 45 100% 51%;
+    --sidebar-ring: 5 100% 69%;
   }
 }
 
@@ -100,4 +99,17 @@ body {
 
 .animate-fadeInUp {
   animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
 }

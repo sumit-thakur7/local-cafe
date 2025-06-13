@@ -7,6 +7,7 @@ import MenuList from '@/components/MenuList';
 import CartDisplay from '@/components/CartDisplay';
 import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
 import CustomerNameDialog from '@/components/CustomerNameDialog';
+import LoadingScreen from '@/components/LoadingScreen'; // New import
 import { sampleMenuItems } from '@/data/menu-items';
 import { RESTAURANT_WHATSAPP_NUMBER, CURRENCY_SYMBOL } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
@@ -15,6 +16,8 @@ import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
 
 export default function HomePage() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isContentLoaded, setIsContentLoaded] = useState(false);
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isOrderConfirmationOpen, setIsOrderConfirmationOpen] = useState(false);
@@ -25,6 +28,11 @@ export default function HomePage() {
   useEffect(() => {
     setMenuItems(sampleMenuItems);
   }, []);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    setTimeout(() => setIsContentLoaded(true), 50); // Content fade-in after loading screen starts hiding
+  };
 
   const handleAddToCart = (itemToAdd: MenuItem) => {
     setCartItems((prevCartItems) => {
@@ -101,8 +109,12 @@ export default function HomePage() {
 
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
+  if (isLoading) {
+    return <LoadingScreen onLoaded={handleLoadingComplete} />;
+  }
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`min-h-screen flex flex-col ${isContentLoaded ? 'animate-fadeIn' : 'opacity-0'}`}>
       <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
@@ -128,11 +140,11 @@ export default function HomePage() {
         <div className="lg:grid lg:grid-cols-3 lg:gap-8">
           <div className="lg:col-span-2">
             <h2 className="font-headline text-3xl mb-6 text-center lg:text-left">Our Menu</h2>
-            <MenuList 
-              menuItems={menuItems} 
+            <MenuList
+              menuItems={menuItems}
               cartItems={cartItems}
               onAddToCart={handleAddToCart}
-              onQuantityChange={handleQuantityChange} 
+              onQuantityChange={handleQuantityChange}
             />
           </div>
 
