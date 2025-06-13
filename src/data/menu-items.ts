@@ -7,7 +7,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Maggi',
     description: 'Classic instant noodles, a quick and tasty snack.',
     price: 50,
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: '/images/maggi.jpg', // Updated to use local image
     category: 'Snacks',
     aiHint: 'noodles snack',
   },
