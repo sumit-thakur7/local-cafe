@@ -65,6 +65,7 @@ export const sampleMenuItems: MenuItem[] = [
     category: 'Snacks',
     aiHint: 'veg omelette',
   },
+  /*
   {
     id: '8',
     name: 'Mountain-Style Maggi',
@@ -74,5 +75,5 @@ export const sampleMenuItems: MenuItem[] = [
     category: 'Snacks',
     aiHint: 'mountain noodles',
   },
+  */
 ];
-

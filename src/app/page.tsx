@@ -8,7 +8,7 @@ import CartDisplay from '@/components/CartDisplay';
 import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
 import CustomerNameDialog from '@/components/CustomerNameDialog';
 import LoadingScreen from '@/components/LoadingScreen';
-import PromotionalAdDialog from '@/components/PromotionalAdDialog'; // Added import
+// import PromotionalAdDialog from '@/components/PromotionalAdDialog'; // Commented out
 import { sampleMenuItems } from '@/data/menu-items';
 import { RESTAURANT_WHATSAPP_NUMBER, CURRENCY_SYMBOL } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
@@ -24,7 +24,7 @@ export default function HomePage() {
   const [isOrderConfirmationOpen, setIsOrderConfirmationOpen] = useState(false);
   const [isNameDialogOpen, setIsNameDialogOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
-  const [isPromotionalAdOpen, setIsPromotionalAdOpen] = useState(false); // Added state for promo ad
+  // const [isPromotionalAdOpen, setIsPromotionalAdOpen] = useState(false); // Commented out
   const { toast } = useToast();
 
   useEffect(() => {
@@ -35,7 +35,8 @@ export default function HomePage() {
     setIsLoading(false);
     setTimeout(() => {
       setIsContentLoaded(true);
-      // Logic to show promotional ad
+      // Logic to show promotional ad (Commented out)
+      /*
       if (typeof window !== 'undefined') {
         const adShown = sessionStorage.getItem('promoAdShown');
         if (!adShown) {
@@ -44,15 +45,18 @@ export default function HomePage() {
           }, 3000); // Show ad 3 seconds after content is loaded
         }
       }
+      */
     }, 50); 
   };
 
-  const handleClosePromotionalAd = () => {
+  /*
+  const handleClosePromotionalAd = () => { // Commented out
     setIsPromotionalAdOpen(false);
     if (typeof window !== 'undefined') {
       sessionStorage.setItem('promoAdShown', 'true');
     }
   };
+  */
 
   const handleAddToCart = (itemToAdd: MenuItem) => {
     setCartItems((prevCartItems) => {
@@ -208,10 +212,12 @@ export default function HomePage() {
         onClose={() => setIsOrderConfirmationOpen(false)}
       />
 
-      <PromotionalAdDialog
+      {/* 
+      <PromotionalAdDialog  // Commented out
         isOpen={isPromotionalAdOpen}
         onClose={handleClosePromotionalAd}
       />
+      */}
 
       <footer className="bg-gray-800 text-white text-center p-4 mt-auto">
         <p className="font-body">&copy; {new Date().getFullYear()} Local Cafe. All rights reserved.</p>
