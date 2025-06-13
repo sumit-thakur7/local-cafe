@@ -122,13 +122,13 @@ export default function HomePage() {
           </div>
           <Button
             variant="ghost"
-            className="lg:hidden relative hover:bg-primary/80"
+            className="lg:hidden relative hover:bg-primary/80 h-14 w-14"
             onClick={() => setShowCart(!showCart)}
             aria-label="Toggle Cart"
           >
-            <ShoppingCart className="h-8 w-8" />
+            <ShoppingCart className="h-12 w-12" />
             {cartItemCount > 0 && (
-              <span className="absolute top-0 right-0 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute top-1 right-1 bg-accent text-accent-foreground text-xs rounded-full h-6 w-6 flex items-center justify-center">
                 {cartItemCount}
               </span>
             )}
