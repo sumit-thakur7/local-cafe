@@ -65,4 +65,14 @@ export const sampleMenuItems: MenuItem[] = [
     category: 'Snacks',
     aiHint: 'veg omelette',
   },
+  {
+    id: '8',
+    name: 'Mountain-Style Maggi',
+    description: 'A comforting bowl of Maggi, infused with aromatic mountain herbs and a touch of smoky flavor. Perfectly soothing, like a warm hug on a chilly day.',
+    price: 70,
+    imageUrl: 'https://placehold.co/600x400.png',
+    category: 'Snacks',
+    aiHint: 'mountain noodles',
+  },
 ];
+
