@@ -48,7 +48,7 @@ export default function HomePage() {
       title: `${itemToAdd.name} added to cart!`,
       description: "You can adjust quantity in the cart.",
       variant: "default",
-      duration: 3000,
+      duration: 2000, // Changed to 2 seconds
     });
   };
 
