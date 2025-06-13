@@ -8,6 +8,7 @@ import CartDisplay from '@/components/CartDisplay';
 import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
 import CustomerNameDialog from '@/components/CustomerNameDialog';
 import LoadingScreen from '@/components/LoadingScreen';
+import PromotionalAdDialog from '@/components/PromotionalAdDialog'; // Added import
 import { sampleMenuItems } from '@/data/menu-items';
 import { RESTAURANT_WHATSAPP_NUMBER, CURRENCY_SYMBOL } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
@@ -23,6 +24,7 @@ export default function HomePage() {
   const [isOrderConfirmationOpen, setIsOrderConfirmationOpen] = useState(false);
   const [isNameDialogOpen, setIsNameDialogOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [isPromotionalAdOpen, setIsPromotionalAdOpen] = useState(false); // Added state for promo ad
   const { toast } = useToast();
 
   useEffect(() => {
@@ -31,7 +33,25 @@ export default function HomePage() {
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
-    setTimeout(() => setIsContentLoaded(true), 50); // Content fade-in after loading screen starts hiding
+    setTimeout(() => {
+      setIsContentLoaded(true);
+      // Logic to show promotional ad
+      if (typeof window !== 'undefined') {
+        const adShown = sessionStorage.getItem('promoAdShown');
+        if (!adShown) {
+          setTimeout(() => {
+            setIsPromotionalAdOpen(true);
+          }, 3000); // Show ad 3 seconds after content is loaded
+        }
+      }
+    }, 50); 
+  };
+
+  const handleClosePromotionalAd = () => {
+    setIsPromotionalAdOpen(false);
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('promoAdShown', 'true');
+    }
   };
 
   const handleAddToCart = (itemToAdd: MenuItem) => {
@@ -48,7 +68,7 @@ export default function HomePage() {
       title: `${itemToAdd.name} added to cart!`,
       description: "You can adjust quantity in the cart.",
       variant: "default",
-      duration: 2000, // Changed to 2 seconds
+      duration: 2000,
     });
   };
 
@@ -122,7 +142,7 @@ export default function HomePage() {
           </div>
           <Button
             variant="ghost"
-            className="lg:hidden relative hover:bg-primary/80 h-14 w-14"
+            className="btn-image-effect lg:hidden relative hover:bg-primary/80 h-14 w-14"
             onClick={() => setShowCart(!showCart)}
             aria-label="Toggle Cart"
           >
@@ -172,7 +192,7 @@ export default function HomePage() {
               onRemoveItem={handleRemoveItem}
               onSubmitOrder={handleSubmitOrder}
             />
-            <Button variant="outline" onClick={() => setShowCart(false)} className="w-full mt-4">Close Cart</Button>
+            <Button variant="outline" onClick={() => setShowCart(false)} className="btn-image-effect w-full mt-4">Close Cart</Button>
           </div>
         </div>
       )}
@@ -186,6 +206,11 @@ export default function HomePage() {
       <OrderConfirmationDialog
         isOpen={isOrderConfirmationOpen}
         onClose={() => setIsOrderConfirmationOpen(false)}
+      />
+
+      <PromotionalAdDialog
+        isOpen={isPromotionalAdOpen}
+        onClose={handleClosePromotionalAd}
       />
 
       <footer className="bg-gray-800 text-white text-center p-4 mt-auto">
