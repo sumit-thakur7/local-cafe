@@ -7,7 +7,7 @@ import MenuList from '@/components/MenuList';
 import CartDisplay from '@/components/CartDisplay';
 import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
 import CustomerNameDialog from '@/components/CustomerNameDialog';
-import LoadingScreen from '@/components/LoadingScreen'; // New import
+import LoadingScreen from '@/components/LoadingScreen';
 import { sampleMenuItems } from '@/data/menu-items';
 import { RESTAURANT_WHATSAPP_NUMBER, CURRENCY_SYMBOL } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
@@ -122,13 +122,13 @@ export default function HomePage() {
           </div>
           <Button
             variant="ghost"
-            className="lg:hidden relative hover:bg-primary/80 h-24 w-24"
+            className="lg:hidden relative hover:bg-primary/80"
             onClick={() => setShowCart(!showCart)}
             aria-label="Toggle Cart"
           >
-            <ShoppingCart className="h-20 w-20" />
+            <ShoppingCart className="h-8 w-8" />
             {cartItemCount > 0 && (
-              <span className="absolute top-1 right-1 bg-accent text-accent-foreground text-sm rounded-full h-7 w-7 flex items-center justify-center">
+              <span className="absolute top-0 right-0 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 {cartItemCount}
               </span>
             )}
@@ -167,7 +167,8 @@ export default function HomePage() {
           >
             <CartDisplay
               cartItems={cartItems}
-              onQuantityChange={handleQuantityChange}
+              onQuantityChange={handleQuantityChange
+              }
               onRemoveItem={handleRemoveItem}
               onSubmitOrder={handleSubmitOrder}
             />
