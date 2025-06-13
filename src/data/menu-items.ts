@@ -7,7 +7,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Maggi',
     description: 'Classic instant noodles, a quick and tasty snack.',
     price: 50,
-    imageUrl: '/images/maggi.jpg', // Updated to use local image
+    imageUrl: '/images/maggi.jpg',
     category: 'Snacks',
     aiHint: 'noodles snack',
   },
@@ -25,7 +25,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Tea',
     description: 'A warm and refreshing cup of tea.',
     price: 20,
-    imageUrl: '/images/chai.jpeg', // Updated to use local image
+    imageUrl: '/images/chai.jpeg',
     category: 'Beverages',
     aiHint: 'tea cup',
   },
@@ -43,7 +43,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Masala Tea',
     description: 'Flavorful and aromatic spiced tea.',
     price: 30,
-    imageUrl: '/images/Masala_Tea.webp', // Updated to use local image
+    imageUrl: '/images/Masala_Tea.webp',
     category: 'Beverages',
     aiHint: 'masala chai',
   },
@@ -61,7 +61,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Veg omelette',
     description: 'A delicious vegetarian omelette.',
     price: 60,
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: '/images/masala-omelette.jpg', // Updated image
     category: 'Snacks',
     aiHint: 'veg omelette',
   },
