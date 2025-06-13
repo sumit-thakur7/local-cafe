@@ -106,7 +106,7 @@ export default function HomePage() {
       <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <Image src="/images/local-logo.jpeg" alt="Cafe Logo" width={60} height={60} className="rounded-full" />
+            <Image src="/images/local-logo.jpeg" alt="Cafe Logo" width={208} height={208} className="rounded-full" />
           </div>
           <Button
             variant="ghost"
