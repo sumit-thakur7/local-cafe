@@ -25,7 +25,7 @@ export const sampleMenuItems: MenuItem[] = [
     name: 'Tea',
     description: 'A warm and refreshing cup of tea.',
     price: 20,
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: '/images/chai.jpeg', // Updated to use local image
     category: 'Beverages',
     aiHint: 'tea cup',
   },
