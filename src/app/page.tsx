@@ -46,7 +46,7 @@ export default function HomePage() {
         }
       }
       */
-    }, 50); 
+    }, 50);
   };
 
   /*
@@ -140,17 +140,17 @@ export default function HomePage() {
   return (
     <div className={`min-h-screen flex flex-col ${isContentLoaded ? 'animate-fadeIn' : 'opacity-0'}`}>
       <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-1 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Image src="/images/local-logo.png" alt="Cafe Logo" width={208} height={208} className="rounded-full" />
           </div>
           <Button
             variant="ghost"
-            className="btn-image-effect lg:hidden relative hover:bg-primary/80 h-14 w-14"
+            className="btn-image-effect lg:hidden relative hover:bg-primary/80 h-[480px] w-[480px]"
             onClick={() => setShowCart(!showCart)}
             aria-label="Toggle Cart"
           >
-            <ShoppingCart className="h-12 w-12" />
+            <ShoppingCart className="h-[410px] w-[410px]" />
             {cartItemCount > 0 && (
               <span className="absolute top-1 right-1 bg-accent text-accent-foreground text-xs rounded-full h-6 w-6 flex items-center justify-center">
                 {cartItemCount}
