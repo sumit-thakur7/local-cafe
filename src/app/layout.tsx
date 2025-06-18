@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -5,6 +6,9 @@ import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
   title: 'Local Cafe',
   description: 'Order your favorite meals online!',
+  icons: {
+    icon: '/logo.png', // Points to public/logo.png
+  },
 };
 
 export default function RootLayout({
