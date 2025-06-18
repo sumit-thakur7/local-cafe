@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   title: 'Local Cafe',
   description: 'Order your favorite meals online!',
   icons: {
-    icon: '/logo.png', // Points to public/logo.png
+    icon: [{ url: '/logo.png', type: 'image/png' }], // General favicon
+    shortcut: [{ url: '/logo.png', type: 'image/png' }], // For older browsers/shortcuts
+    apple: [{ url: '/logo.png', type: 'image/png' }], // For Apple touch icons
   },
 };
 
